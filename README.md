@@ -25,7 +25,7 @@ You are cautioned to observe these models and use your own intuition when consum
 
 ## Getting started
 
-> **Warning**
+> [!WARNING]
 >
 > The extension is still under active development, and it isn't ready at the moment, even for preliminary use. Wait a bit longer for a UI!
 
