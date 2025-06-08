@@ -26,9 +26,7 @@ export default defineContentScript({
     var article: null | Article = reader.parse();
 
     if (article) {
-      sendMessage("processArticle", article).then((response) => {
-        console.log("Response from Ollama:", response);
-      });
+      sendMessage("processArticle", article);
     }
   },
 });

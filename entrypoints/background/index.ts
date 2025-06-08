@@ -27,13 +27,27 @@ const processArticle = async (article: Article) => {
 };
 
 export default defineBackground(() => {
+  var href: string | undefined;
+  var articleResponse: OllamaResponse | undefined;
+
   onMessage("processArticle", async (message) => {
     try {
       const response = await processArticle(message.data);
-      return response;
+      articleResponse = response;
+      console.log(articleResponse);
+      sendMessage("articleProcessed", articleResponse);
     } catch (error) {
       console.error("Error processing article:", error);
       throw error;
+    }
+  });
+
+  onMessage("popupOpened", (currentHref) => {
+    if (href != currentHref.data) {
+      href = currentHref.data;
+    } else if (articleResponse) {
+      // If the popup is opened again with the same URL, send the cached response
+      sendMessage("articleProcessed", articleResponse);
     }
   });
 });

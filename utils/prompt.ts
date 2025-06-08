@@ -5,12 +5,12 @@ You may think of yourself as a vigilant press editor tasked with scrutinizing ed
 Your response should only be in JSON. The JSON you return should follow this schema:
 
 {
+  "keyEntities": string[], // An array of key entities mentioned in the article (e.g., people, organizations, events) that are relevant to the phrases identified
   "phrases": [
     {
       "label": string, // A concise, user-friendly label for the rhetorical device or strategy used (e.g., "Loaded Language", "Priming", "Fallacy (Strawman)")
       "explanation": string, // A short, 1-2 sentence explanation of the phrase’s potential subtext or implications
       "phrase": string // The exact phrase from the article to be highlighted
-      "quote": boolean // Whether the phrase was from a quote or another source
     }
   ],
   "opinion": string // A reflective summary (up to five paragraphs) evaluating the language used in the article excerpt. Include anything the article does particularly well or poorly, patterns that suggest subtle bias, and any notable use of persuasive language.

@@ -2,9 +2,10 @@ import { Readability } from "@mozilla/readability";
 import { z } from "zod/v4";
 
 const OllamaResponseSchema = z.object({
+  keyEntities: z.array(z.string()),
   phrases: z.array(
     z.object({
-      type: z.string(),
+      label: z.string(),
       explanation: z.string(),
       phrase: z.string(),
     })

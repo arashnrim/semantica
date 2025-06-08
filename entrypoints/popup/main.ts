@@ -2,6 +2,7 @@ import "./style.css";
 import typescriptLogo from "@/assets/typescript.svg";
 import viteLogo from "/wxt.svg";
 import { setupCounter } from "@/components/counter";
+import { onMessage } from "@/utils/messaging";
 
 document.querySelector<HTMLImageElement>("#vite-logo")!.src = viteLogo;
 document.querySelector<HTMLImageElement>("#typescript-logo")!.src =
@@ -24,5 +25,12 @@ document.querySelector<HTMLImageElement>("#typescript-logo")!.src =
 //     </p>
 //   </div>
 // `;
+
+sendMessage("popupOpened", document.location.href);
+
+onMessage("articleProcessed", (response) => {
+  document.querySelector<HTMLParagraphElement>("#response")!.textContent =
+    JSON.stringify(response, null, 2);
+});
 
 setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
