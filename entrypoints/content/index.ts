@@ -1,4 +1,3 @@
-import type { ContentScriptContext } from "#imports";
 import { type Article } from "@/types";
 import { sendMessage } from "@/utils/messaging";
 import { Readability } from "@mozilla/readability";
@@ -17,7 +16,7 @@ import { Readability } from "@mozilla/readability";
 
 export default defineContentScript({
   matches: ["*://*/*"],
-  main(context: ContentScriptContext) {
+  main() {
     // Clone required because Readability modifies the document
     var clone = document.cloneNode(true) as Document;
 
@@ -26,7 +25,7 @@ export default defineContentScript({
     var article: null | Article = reader.parse();
 
     if (article) {
-      sendMessage("processArticle", article);
+      sendMessage("processArticle", { url: document.location.href, article });
     }
   },
 });

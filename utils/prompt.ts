@@ -13,7 +13,7 @@ Your response should only be in JSON. The JSON you return should follow this sch
       "phrase": string // The exact phrase from the article to be highlighted
     }
   ],
-  "opinion": string // A reflective summary (up to five paragraphs) evaluating the language used in the article excerpt. Include anything the article does particularly well or poorly, patterns that suggest subtle bias, and any notable use of persuasive language.
+  "opinion": string // A reflective summary (less than 5 sentences) evaluating the language used in the article excerpt. Include anything the article does particularly well or poorly, patterns that suggest subtle bias, and any notable use of persuasive language.
 }
 
 IMPORTANT: Do not over-scrutinize. You are evaluating subtle rhetorical choices or suggestive framing, not simply any use of descriptive or subjective language. Avoid flagging harmless stylistic phrases unless they clearly push a specific perspective or interpretation. Use your judgment to distinguish between ordinary language and language that may meaningfully shift how the reader interprets the event. It is better to highlight fewer, more meaningful phrases than to include too many minor or debatable ones. Where the language is reasonably neutral or the rhetorical impact is unclear, give the benefit of the doubt and avoid flagging it. Only return phrases where you can confidently articulate the potential implication behind their use.

@@ -1,36 +1,26 @@
-import "./style.css";
-import typescriptLogo from "@/assets/typescript.svg";
-import viteLogo from "/wxt.svg";
-import { setupCounter } from "@/components/counter";
+import type { Analysis } from "@/types";
 import { onMessage } from "@/utils/messaging";
+import { browser } from "wxt/browser";
+import "./style.css";
 
-document.querySelector<HTMLImageElement>("#vite-logo")!.src = viteLogo;
-document.querySelector<HTMLImageElement>("#typescript-logo")!.src =
-  typescriptLogo;
+var generalAnalysis = document.querySelector("#general-analysis");
+var languageUsage = document.querySelector("#language-usage");
 
-// document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-//   <div>
-//     <a href="https://wxt.dev" target="_blank">
-//       <img src="${viteLogo}" class="logo" alt="WXT logo" />
-//     </a>
-//     <a href="https://www.typescriptlang.org/" target="_blank">
-//       <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-//     </a>
-//     <h1>WXT + TypeScript</h1>
-//     <div class="card">
-//       <button id="counter" type="button"></button>
-//     </div>
-//     <p class="read-the-docs">
-//       Click on the WXT and TypeScript logos to learn more
-//     </p>
-//   </div>
-// `;
+browser.tabs
+  .query({ active: true, currentWindow: true })
+  .then((tabs) => sendMessage("popupOpened", tabs[0].url ?? ""));
 
-sendMessage("popupOpened", document.location.href);
+onMessage("articleProcessed", (data) => {
+  const analysis = data.data.analysis as Analysis;
 
-onMessage("articleProcessed", (response) => {
+  const generalParagraph =
+    generalAnalysis?.querySelector<HTMLParagraphElement>("p");
+  if (generalParagraph && analysis.opinion) {
+    generalParagraph.textContent = analysis.opinion;
+  }
+
   document.querySelector<HTMLParagraphElement>("#response")!.textContent =
-    JSON.stringify(response, null, 2);
+    JSON.stringify(data, null, 2);
 });
 
-setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
+// setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);

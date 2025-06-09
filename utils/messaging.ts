@@ -1,9 +1,9 @@
-import type { Article, OllamaResponse } from "@/types";
+import type { Article, Analysis } from "@/types";
 import { defineExtensionMessaging } from "@webext-core/messaging";
 
 interface ProtocolMap {
-  processArticle(data: Article): void;
-  articleProcessed: OllamaResponse;
+  processArticle(data: { url: string; article: Article }): void;
+  articleProcessed: { url: string; analysis: Analysis };
   popupOpened(url: string): void;
 }
 

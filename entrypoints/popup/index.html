@@ -3,34 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Default Popup Title</title>
+    <title>Semantica</title>
     <meta name="manifest.type" content="browser_action" />
   </head>
   <body>
-    <div id="app">
-      <div>
-        <a href="https://wxt.dev" target="_blank">
-          <img id="vite-logo" src="${viteLogo}" class="logo" alt="WXT logo" />
-        </a>
-        <a href="https://www.typescriptlang.org/" target="_blank">
-          <img
-            id="typescript-logo"
-            src="${typescriptLogo}"
-            class="logo vanilla"
-            alt="TypeScript logo"
-          />
-        </a>
-        <h1>WXT + TypeScript</h1>
-        <div class="card">
-          <button id="counter" type="button"></button>
-        </div>
-        <p class="read-the-docs">
-          Click on the WXT and TypeScript logos to learn more
-        </p>
+    <main id="app">
+      <section id="general-analysis">
+        <h1>General analysis</h1>
+        <p>Loading...</p>
+      </section>
+      <section id="language-usage">
+        <h1>Language usage</h1>
+        <p>Loading...</p>
+      </section>
+    </main>
 
-        <p id="response">Loading...</p>
-      </div>
-    </div>
     <script type="module" src="./main.ts"></script>
   </body>
 </html>
