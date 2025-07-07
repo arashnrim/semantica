@@ -12,20 +12,20 @@ importers:
         specifier: ^0.6.0
         version: 0.6.0
       '@webext-core/messaging':
-        specifier: ^2.2.0
-        version: 2.2.0
+        specifier: ^2.3.0
+        version: 2.3.0
       ollama:
         specifier: ^0.5.16
         version: 0.5.16
       zod:
-        specifier: ^3.25.51
-        version: 3.25.63
+        specifier: ^3.25.75
+        version: 3.25.75
     devDependencies:
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
       wxt:
-        specifier: ^0.20.6
+        specifier: ^0.20.7
         version: 0.20.7(@types/node@22.15.27)(jiti@2.4.2)(rollup@4.41.1)
 
 packages:
@@ -396,8 +396,8 @@ packages:
   '@webext-core/match-patterns@1.0.3':
     resolution: {integrity: sha512-NY39ACqCxdKBmHgw361M9pfJma8e4AZo20w9AY+5ZjIj1W2dvXC8J31G5fjfOGbulW9w4WKpT8fPooi0mLkn9A==}
 
-  '@webext-core/messaging@2.2.0':
-    resolution: {integrity: sha512-CRKFSH8ZAp55QpzfseOO/RlW6fAVSGWYNJK1j23khB855Ba9wHu8PB3uuqMVZtfEAwAmsw/2U8HIkony5adFBQ==}
+  '@webext-core/messaging@2.3.0':
+    resolution: {integrity: sha512-gChSVKdRs7JEq5hFH0jVROSvTq+sKq9afXTA/gBswep3RWNLhXyDsXFlvPMkYbmML1XZ8QKKC9ou2MlCKRZwSQ==}
 
   '@wxt-dev/browser@0.0.326':
     resolution: {integrity: sha512-4Pb4ES7jMsxYFHEEhK005bOL2BnDEXO3jjZTOvF0gWdota8Ytpg81VtKVSC1ohj17C6tE6oNI3FdcVRfKUBl3Q==}
@@ -1900,8 +1900,8 @@ packages:
   zip-dir@2.0.0:
     resolution: {integrity: sha512-uhlsJZWz26FLYXOD6WVuq+fIcZ3aBPGo/cFdiLlv3KNwpa52IF3ISV8fLhQLiqVu5No3VhlqlgthN6gehil1Dg==}
 
-  zod@3.25.63:
-    resolution: {integrity: sha512-3ttCkqhtpncYXfP0f6dsyabbYV/nEUW+Xlu89jiXbTBifUfjaSqXOG6JnQPLtqt87n7KAmnMqcjay6c0Wq0Vbw==}
+  zod@3.25.75:
+    resolution: {integrity: sha512-OhpzAmVzabPOL6C3A3gpAifqr9MqihV/Msx3gor2b2kviCgcb+HM9SEOpMWwwNp9MRunWnhtAKUoo0AHhjyPPg==}
 
 snapshots:
 
@@ -2154,7 +2154,7 @@ snapshots:
 
   '@webext-core/match-patterns@1.0.3': {}
 
-  '@webext-core/messaging@2.2.0':
+  '@webext-core/messaging@2.3.0':
     dependencies:
       serialize-error: 11.0.3
       uid: 2.0.2
@@ -3187,7 +3187,7 @@ snapshots:
       open: 9.1.0
       ora: 6.3.1
       prompts: 2.4.2
-      zod: 3.25.63
+      zod: 3.25.75
     transitivePeerDependencies:
       - supports-color
 
@@ -3750,4 +3750,4 @@ snapshots:
       async: 3.2.6
       jszip: 3.10.1
 
-  zod@3.25.63: {}
+  zod@3.25.75: {}
