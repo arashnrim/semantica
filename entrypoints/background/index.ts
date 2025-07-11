@@ -32,11 +32,23 @@ export default defineBackground(() => {
   onMessage("processArticle", async (message) => {
     try {
       if (!analysesMap[message.data.url]) {
+        console.info("[SEMANTICA] Processing article:", message.data.url);
         const analysis = await processArticle(message.data.article);
         analysesMap[message.data.url] = analysis;
+        console.info(
+          "[SEMANTICA] Article processed for ",
+          message.data.url,
+          ": ",
+          analysis
+        );
+
+        sendMessage("articleProcessed", {
+          url: message.data.url,
+          analysis: analysis,
+        });
       }
     } catch (error) {
-      console.error("Error processing article:", error);
+      console.error("[SEMANTICA] Error processing article:", error);
       throw error;
     }
   });
