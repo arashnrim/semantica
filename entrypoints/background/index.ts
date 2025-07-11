@@ -5,7 +5,7 @@ import ollama from "ollama/browser";
 import { z } from "zod/v4";
 
 const processArticle = async (article: Article) => {
-  const modelFamily = "qwen3";
+  const modelFamily = "llama3.1";
   const jsonSchema = z.toJSONSchema(AnalysisSchema);
 
   const apiResponse = await ollama.generate({
@@ -27,18 +27,22 @@ const processArticle = async (article: Article) => {
 };
 
 export default defineBackground(() => {
-  var analysesMap: Record<string, Analysis> = {};
+  var analysesMap: Record<string, { analysis: Analysis; contentHash: number }> =
+    {};
 
   onMessage("processArticle", async (message) => {
     try {
-      if (!analysesMap[message.data.url]) {
+      const contentHash = generateHash(message.data.article.textContent ?? "");
+
+      if (
+        !analysesMap[message.data.url] ||
+        analysesMap[message.data.url].contentHash !== contentHash
+      ) {
         console.info("[SEMANTICA] Processing article:", message.data.url);
         const analysis = await processArticle(message.data.article);
-        analysesMap[message.data.url] = analysis;
+        analysesMap[message.data.url] = { analysis, contentHash };
         console.info(
-          "[SEMANTICA] Article processed for ",
-          message.data.url,
-          ": ",
+          `[SEMANTICA] Article processed for ${message.data.url}:`,
           analysis
         );
 
@@ -58,7 +62,7 @@ export default defineBackground(() => {
       // If the popup is opened with a URL that has already been processed, send the cached response
       sendMessage("articleProcessed", {
         url: currentHref.data,
-        analysis: analysesMap[currentHref.data],
+        analysis: analysesMap[currentHref.data].analysis,
       });
     }
   });
